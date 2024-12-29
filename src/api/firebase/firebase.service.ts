@@ -6,7 +6,7 @@ import * as admin from 'firebase-admin';
 export class FirebaseService {
   private db: FirebaseFirestore.Firestore;
   constructor() {
-    const serviceAccount = path.resolve(__dirname, '../../firebase.json');
+    const serviceAccount = path.resolve(__dirname, '../../../firebase.json');
 
     admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
