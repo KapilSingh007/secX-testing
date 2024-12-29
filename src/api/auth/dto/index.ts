@@ -1,5 +1,5 @@
 import { Transform } from 'class-transformer';
-import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+import { IsEmail, IsEnum, IsNotEmpty, IsString } from 'class-validator';
 
 export class LoginDto {
   @IsEmail()
@@ -12,6 +12,10 @@ export class LoginDto {
   password: string;
 }
 
+export enum LoginMode {
+  gmail,
+  email,
+}
 export class RegisterDto {
   @IsNotEmpty()
   @IsString()
@@ -29,4 +33,22 @@ export class RegisterDto {
   @IsNotEmpty()
   @IsString()
   password: string;
+
+  @IsNotEmpty()
+  @IsEnum(LoginMode)
+  mode: LoginMode;
+}
+
+export class UpdatePasswordDto {
+  @IsNotEmpty()
+  @IsString()
+  oldPassword: string;
+
+  @IsNotEmpty()
+  @IsString()
+  newPassword: string;
+
+  @IsNotEmpty()
+  @IsEmail()
+  email:string;
 }
